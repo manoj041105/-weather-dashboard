@@ -83,24 +83,12 @@ function formatTime(unixSeconds, timezoneOffsetSeconds) {
   const date = new Date((unixSeconds + timezoneOffsetSeconds) * 1000);
   return date.toUTCString().match(/(\d{2}:\d{2}):\d{2}/)[1];
 }
-
 function updateSkyMood(tempCelsius, isNight) {
-  // Cold -> deep blue, mild -> teal/blue, hot -> warm amber. Signature ambient background.
-  let stops;
-  if (isNight) {
-    stops = ["#0b1330", "#1c2a52", "#3a3f6b"];
-  } else if (tempCelsius <= 5) {
-    stops = ["#1c3a5e", "#3f6f9c", "#cfe7e0"];
-  } else if (tempCelsius <= 18) {
-    stops = ["#274472", "#5b8bb0", "#cfe7e0"];
-  } else if (tempCelsius <= 28) {
-    stops = ["#2b6777", "#52a68d", "#e8e5b8"];
-  } else {
-    stops = ["#7a3b26", "#d9773f", "#f6d78b"];
-  }
+  const stops = isNight
+    ? ["#081f16", "#173d2f", "#6fa8b8"]
+    : ["#123524", "#2f6f5e", "#bfe3f0"];
   els.sky.style.background = `linear-gradient(160deg, ${stops[0]}, ${stops[1]} 55%, ${stops[2]} 100%)`;
 }
-
 function toCelsius(kelvinBasedTempInCurrentUnit) {
   // Not used directly — we re-fetch per unit to keep the API contract simple.
   return kelvinBasedTempInCurrentUnit;
