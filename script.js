@@ -7,8 +7,7 @@
  *   localStorage.setItem('OPENWEATHER_API_KEY', 'yourKeyHere')
  */
 
-const API_KEY = "0815fa11667c835bb39e860cbebe751f
-"; // <-- put your key here
+const API_KEY = "0815fa11667c835bb39e860cbebe751f"; // <-- put your key here // <-- put your key here
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 const state = {
